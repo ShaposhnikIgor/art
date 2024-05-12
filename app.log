@@ -1,0 +1,3 @@
+2024/05/12 15:53:40 File: /home/igor/k.SisuGo/art/artm.go, Line: 39, Error: open path/to/settings/file: no such file or directory
+2024/05/12 16:06:00 File: /home/igor/k.SisuGo/art/artm.go, Line: 41, Error: open path/to/settings/file: no such file or directory
+2024/05/12 16:11:35 /home/igor/k.SisuGo/art/Art_decode.go:39: error: Invalid section format
