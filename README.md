@@ -1,4 +1,4 @@
-# ![ART Cypher Tool](<img src="https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/server/static/img/art0.png" alt="Логотип проекта" width="50" height="60">)
+# ![ART Cypher Tool](https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/server/static/img/art0.png) {width="50" height="60"}
 
 ## Table of Contents
 
@@ -56,7 +56,7 @@ If you want to run the program in the terminal:
 go run . -o
 ```
 Use the CLI to encode and decode text.
-You can read more about using the CLI in the <a href="[leart.com/art/cli/README_CLI.md](https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/cli/README_CLI.md)" style="display: inline-block; padding: 6px 12px; font-size: 12px; color: white; background-color:#4c00824f; text-align: center; text-decoration: none; border-radius: 5px;">
+You can read more about using the CLI in the <a href="https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/cli/README_CLI.md" style="display: inline-block; padding: 6px 12px; font-size: 12px; color: white; background-color:#4c00824f; text-align: center; text-decoration: none; border-radius: 5px;">
   README_CLI.md
 </a>
 
