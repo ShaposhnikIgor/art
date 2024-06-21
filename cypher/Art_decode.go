@@ -1,4 +1,4 @@
-package main
+package cypher
 
 import (
 	"log"
@@ -9,14 +9,14 @@ import (
 
 // decode_Art decodes the given message encoded in the ART cipher.
 // It takes a string message as input and returns the decoded message as a string.
-func decode_Art(message string) string {
+func Decod_Art(message string) string {
 	// Check if the data is already decoded.
-	if if_decod(message) {
+	if If_Decod(message) {
 		return "data decoded, try again" // Return a message indicating that the data is already decoded.
 	}
 
 	// Check if the square brackets in the message are balanced.
-	if !isBalanced([]byte(message)) {
+	if !IsBalanced([]byte(message)) {
 		return "unbalanced square brackets" // Return a message indicating unbalanced square brackets.
 	}
 

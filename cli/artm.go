@@ -1,9 +1,10 @@
-package main
+package cli
 
 import (
 	"bufio"
 	"errors"
-	"flag"
+
+	//"flag"
 	"fmt"
 	"log"
 	"os"
@@ -11,6 +12,8 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+
+	"leart.com/art/cypher"
 )
 
 // UserChoice struct represents the user's choice during interactions.
@@ -19,18 +22,9 @@ type UserChoice struct {
 	GoBack bool   // GoBack indicates whether to return to the previous step.
 }
 
-func main() {
-
-	// Open or create a log file for recording errors and informational messages.
-	logFile, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
-	if err != nil {
-		log.Fatal("Failed to open log file:", err)
-	}
-	defer logFile.Close()
-
-	// Set log output to the log file.
-	log.SetOutput(logFile)
-
+func RunCLI() {
+	decode_Art := cypher.Decod_Art
+	encode_Art := cypher.Encod_Art
 	// Parse command-line arguments.
 	args := os.Args[1:]
 	if len(args) == 0 {
@@ -40,68 +34,60 @@ func main() {
 		os.Exit(0)
 	}
 
-	// Check if the "-o" flag is provided.
+	// Check if the first argument is the encoded text.
 	if len(args) > 0 && args[0] != "-o" {
-
-		// If no flag is provided, assume the input is the encoded text.
 		encodedText := args[0]
 
 		// Decode the text and print the result.
 		decodedText := decode_Art(encodedText)
 		fmt.Println(decodedText)
+		return
 	}
 
-	// Parse the "-o" flag to call the main menu.
-	mainmenuFlag := flag.Bool("o", false, "Call main menu")
-	flag.Parse()
+	fmt.Println("Welcome to the ART Cypher Tool!")
 
-	// If the "-o" flag is provided, display the main menu and handle user interactions.
-	if *mainmenuFlag {
-		fmt.Println("Welcome to the ART Cypher Tool!")
+	for {
 
-		for {
+		// Get user input for encryption/decryption, input/output methods, and message/file selection.
+		toEncrypt, inputMethod, outputMethod, message := getInput()
 
-			// Get user input for encryption/decryption, input/output methods, and message/file selection.
-			toEncrypt, inputMethod, outputMethod, message := getInput()
-
-			if toEncrypt.GoBack {
-				continue
-			}
-
-			var result string
-
-			// Perform encryption or decryption based on user choices.
-			switch inputMethod.Choice {
-			case "1":
-				if toEncrypt.Choice == "1" {
-					result = encode_Art(message)
-				} else {
-					result = decode_Art(message)
-				}
-			case "2":
-				if toEncrypt.Choice == "1" {
-					result = encode_Art(message)
-				} else {
-					result = decode_Art(message)
-				}
-			default:
-				fmt.Println("Invalid input method selection. Please try again.")
-				continue
-			}
-
-			// Display or write the result based on the output method selected by the user.
-			switch outputMethod.Choice {
-			case "1":
-				fmt.Println(result)
-			case "2":
-				writeToFile("output.txt", result)
-				fmt.Println("Result has been written to output.txt")
-			default:
-				fmt.Println("Invalid output method selection. Please try again.")
-				continue
-			}
-			os.Exit(0)
+		if toEncrypt.GoBack {
+			continue
 		}
+
+		var result string
+
+		// Perform encryption or decryption based on user choices.
+		switch inputMethod.Choice {
+		case "1":
+			if toEncrypt.Choice == "1" {
+				result = encode_Art(message)
+			} else {
+				result = decode_Art(message)
+			}
+		case "2":
+			if toEncrypt.Choice == "1" {
+				result = encode_Art(message)
+			} else {
+				result = decode_Art(message)
+			}
+		default:
+			fmt.Println("Invalid input method selection. Please try again.")
+			continue
+		}
+
+		// Display or write the result based on the output method selected by the user.
+		switch outputMethod.Choice {
+		case "1":
+			fmt.Println(result)
+		case "2":
+			writeToFile("output.txt", result)
+			fmt.Println("Result has been written to output.txt")
+		default:
+			fmt.Println("Invalid output method selection. Please try again.")
+			continue
+		}
+		os.Exit(0)
 	}
 }
 

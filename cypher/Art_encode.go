@@ -1,4 +1,4 @@
-package main
+package cypher
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 
 // encode_Art function encodes a message using the ART encoding scheme.
 // It takes a string message as input and returns the encoded message as a string.
-func encode_Art(message string) string {
+func Encod_Art(message string) string {
 	// Check if the message is already encoded.
 	if if_encod(message) {
 		return "data encoded, try again"

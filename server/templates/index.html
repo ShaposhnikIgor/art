@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ART Cypher Tool</title>
+    <link rel="stylesheet" href="/static/style.css?v=123456">
+</head>
+<body>
+    <div class="header">
+        <div class="sphere-container">
+            <div class="purple-circle"></div>
+            <div class="sphere">
+                <div class="circle">
+                    <div class="content">kood<span>/</span>Sisu</div>
+                </div>
+                <div class="circle">
+                    <div class="content">kood<span>/</span>Sisu</div>
+                </div>
+                <div class="circle">
+                    <div class="content">kood<span>/</span>Sisu</div>
+                </div>
+                <div class="circle">
+                    <div class="content">kood<span>/</span>Sisu</div>
+                </div>
+                <div class="circle">
+                    <div class="content">kood<span>/</span>Sisu</div>
+                </div>
+            </div>
+            <div class="small-circle orange"></div>
+            <div class="small-circle pink"></div>
+            <div class="small-circle yellow"></div>
+        </div>
+        <h1 class="rainbow-text">Welcome to the ART Cypher Tool</h1>
+    </div>
+    <div class="container">
+        <form action="/decode" method="post">
+            <textarea name="text" placeholder="Enter encoded text here..." required></textarea>
+            <button type="submit">Decode</button>
+        </form>
+        <div class="image-container">
+            <div class="image"></div>
+        </div>
+        <form action="/encode" method="post">
+            <textarea name="text" placeholder="Enter text to encode..." required></textarea>
+            <button type="submit">Encode</button>
+        </form>
+    </div>
+    {{if .Result}}
+    <h2>Result</h2>
+    <pre>{{.Result}}</pre>
+    {{end}}   
+</body>
+</html>

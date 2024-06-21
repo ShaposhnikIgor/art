@@ -1,4 +1,4 @@
-package main
+package cypher
 
 import (
 	"strings"
@@ -6,7 +6,7 @@ import (
 
 // if_decod checks if the given message is already decoded.
 // It takes a string message as input and returns true if the message is already decoded, false otherwise.
-func if_decod(message string) bool {
+func If_Decod(message string) bool {
 	// Check if the message contains both '[' and ']'.
 	if strings.Contains(message, "[") && strings.Contains(message, "]") {
 		return false // If both '[' and ']' are present, the message is not decoded.
@@ -17,7 +17,7 @@ func if_decod(message string) bool {
 
 // isBalanced checks if the square brackets in the given message are balanced.
 // It takes a byte slice message as input and returns true if the square brackets are balanced, false otherwise.
-func isBalanced(message []byte) bool {
+func IsBalanced(message []byte) bool {
 	// Initializing a variable to keep track of the count of '[' characters.
 	count := 0
 	// Looping through each character in the message.

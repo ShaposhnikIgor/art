@@ -1,3 +1,14 @@
 2024/05/12 15:53:40 File: /home/igor/k.SisuGo/art/artm.go, Line: 39, Error: open path/to/settings/file: no such file or directory
 2024/05/12 16:06:00 File: /home/igor/k.SisuGo/art/artm.go, Line: 41, Error: open path/to/settings/file: no such file or directory
 2024/05/12 16:11:35 /home/igor/k.SisuGo/art/Art_decode.go:39: error: Invalid section format
+2024/05/13 13:27:29 /home/igor/k.SisuGo/art/artm.go:37: Empty string
+2024/05/27 22:44:31 /home/igor/k.SisuGo/art/cli/artm.go:30: Empty string
+2024/06/09 21:34:11 /home/igor/k.SisuGo/art/cypher/Art_decode.go:48: error: Invalid section format
+2024/06/16 23:14:49 /home/igor/k.SisuGo/art/cli/artm.go:30: Empty string
+2024/06/21 00:50:22 listen tcp :8080: bind: address already in use
+2024/06/21 00:50:31 listen tcp :8080: bind: address already in use
+2024/06/21 00:50:37 listen tcp :8080: bind: address already in use
+2024/06/21 00:51:02 listen tcp :8080: bind: address already in use
+2024/06/21 14:27:29 Bad request: invalid encoded text
+2024/06/21 14:31:16 Method not allowed: GET
+2024/06/21 14:33:53 Bad request: invalid encoded text
