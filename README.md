@@ -1,4 +1,9 @@
-# ![ART Cypher Tool](https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/server/static/img/art0.png) {width="50" height="60"}
+<img src="https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/server/static/img/art0.png" alt="Логотип проекта" width="50" height="60">
+
+# ART Cypher Tool
+
+
+[![# ART Cypher Tool](https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/server/static/img/art0.png)]
 
 ## Table of Contents
 
