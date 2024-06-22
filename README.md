@@ -1,45 +1,5 @@
-<img src="https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/server/static/img/art0.png" alt="ART Cypher Tool" width="50" height="60">
-
-
 
 # ART Cypher Tool
-
-![ART Cypher Tool](art/server/static/img/art0.png)
-
-
-
-# ART Cypher Tool
-
-![ART Cypher Tool](https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/server/static/img/art0.png)
-
-
-# ART Cypher Tool
-
-
-[![# ART Cypher Tool](https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/server/static/img/art0.png)]
-
-
-
-
-<img src="https://fex.net/ru/s/cezkzn3" alt="ART Cypher Tool" width="50" height="60">
-
-# ART Cypher Tool
-
-![ART Cypher Tool](https://fex.net/ru/s/cezkzn3)
-
-
-
-# ART Cypher Tool
-
-![ART Cypher Tool](https://fex.net/ru/s/cezkzn3)
-
-
-# ART Cypher Tool
-
-
-[![# ART Cypher Tool](https://fex.net/ru/s/cezkzn3)]
-
-
 
 
 ## Table of Contents
@@ -179,12 +139,3 @@ This will execute all the tests in server_test.go and provide verbose output.
 > works as expected.
 >
 > ✨ ✨ ✨ ✨ ✨ ✨ ✨
-
-[art/src/branch/main/server/static/img/art0.png][PlGd]
-[fex.net/ru/s/cezkzn3][PlG]
-
-[//]:
-
-[PlG]: <https://fex.net/ru/s/cezkzn3>
-
-[PlGd]: <https://gitea.koodsisu.fi/ihorshaposhnik/art/src/branch/main/server/static/img/art0.png>
