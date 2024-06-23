@@ -17,7 +17,7 @@ func main() {
 	cliFlag := flag.Bool("o", false, "Run CLI without starting server")
 	flag.Parse()
 
-	// Настройка логгера
+	// Configure logger
 	logFile, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatal("Failed to open log file:", err)
@@ -31,14 +31,14 @@ func main() {
 	// }
 
 	if *cliFlag {
-		// Запуск CLI
+		// Run CLI
 		cli.RunCLI()
 	} else if *serverFlag {
-		// Запуск сервера
+		// Start server
 		fmt.Println("Starting server on :8080")
 		log.Fatal(http.ListenAndServe(":8080", server.NewHandler()))
 	} else {
-		// Если не указаны флаги, выводим сообщение об ошибке
-		fmt.Println("Please specify a mode: -server to start the server or -cli to run the CLI")
+		// If no flags are specified, print an error message
+		fmt.Println("Please specify a mode: -server to start the server or -o to run the CLI")
 	}
 }

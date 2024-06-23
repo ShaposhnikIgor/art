@@ -1,4 +1,4 @@
-/* Подключение шрифтов */
+/* Font inclusion */
 @font-face {
     font-family: 'Permanent Marker';
     src: url('/static/fonts/PermanentMarker-Regular.ttf') format('truetype');
@@ -13,7 +13,7 @@
     font-style: normal;
 }
 
-/* Основные стили */
+/* Basic styles */
 body {
     font-family: 'Kaushan Script', sans-serif;
     background-color: #605a5a15;
@@ -50,6 +50,7 @@ body {
     min-width: 1000px;
 }
 
+/* Rainbow text animation */
 @keyframes rainbow {
     0% { color: red; }
     14% { color: orange; }
@@ -123,10 +124,7 @@ pre {
     border: 1px solid #43e76c;
 }
 
-
-
-
-/* Стили для анимации изображения */
+/* Styles for image animation */
 .image-container {
     position: relative;
     width: 300px;
@@ -148,6 +146,7 @@ pre {
     animation: explode 1s forwards, gather 1s 1s forwards;
 }
 
+/* Keyframes for explosion animation */
 @keyframes explode {
     0% {
         clip-path: inset(0%);
@@ -159,7 +158,7 @@ pre {
     }
 }
 
-/* Ключевые кадры для анимации взрыва */
+/* Keyframes for explosion animation */
 @keyframes explode {
     0% {
         transform: scale(2);
@@ -171,7 +170,7 @@ pre {
     }
 }
 
-
+/* Keyframes for gather animation */
 @keyframes gather {
     0% {
         clip-path: inset(50%);
@@ -183,13 +182,7 @@ pre {
     }
 }
 
-
-
-
-
-
-
-/* Стили для сфер */
+/* Styles for spheres */
 .sphere-container {
     position: relative;
     width: 150px;
@@ -235,52 +228,51 @@ pre {
     animation: colorChange 5s infinite;
 }
 
+/* Keyframes for rotation animation */
 @keyframes rotate {
     from { transform: rotateY(0deg); }
     to { transform: rotateY(360deg); }
 }
 
+/* Keyframes for spin animation */
 @keyframes spin {
     from { transform: rotateZ(0deg); }
     to { transform: rotateZ(360deg); }
 }
 
+/* Keyframes for color change animation */
 @keyframes colorChange {
     0%, 100% { color: lime; }
     50% { color: red; }
 }
 
-
-
-
-
-/* Фиолетовый круг */
+/* Purple circle */
 .purple-circle {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 120px; /* Размер круга */
-    height: 120px; /* Размер круга */
+    width: 120px; /* Circle size */
+    height: 120px; /* Circle size */
     background-color: #800080;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    z-index: -1; /* Поместить круг позади текста */
-    cursor: pointer; /* Изменяем курсор на указатель, чтобы показать, что элемент кликабельный */
+    z-index: -1; /* Place the circle behind the text */
+    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
     animation: pulse 5s infinite alternate;
  }
 
+ /* Keyframes for pulse animation */
  @keyframes pulse {
     0%, 100% { transform: translate(-50%, -50%) scale(1); }
     50% { transform: translate(-50%, -50%) scale(1.1); }
 }
 
-
-
-/* Анимация разлета */
+/* Animation for circle explosion */
 .purple-circle:active ~ .small-circle {
     animation: flyAwayAndReturn 10s forwards;
 }
 
+/* Keyframes for flying away and returning animation */
 @keyframes flyAwayAndReturn {
     0%, 100% {
         transform: translate(-50%, -50%) scale(1);
@@ -292,11 +284,11 @@ pre {
     }
 }
 
-/* Маленькие круги */
+/* Small circles */
 .small-circle {
     position: absolute;
-    width: 20px; /* Размер маленького круга */
-    height: 20px; /* Размер маленького круга */
+    width: 20px; /* Small circle size */
+    height: 20px; /* Small circle size */
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -306,32 +298,32 @@ pre {
 
 .small-circle.orange {
     background-color: orange;
-    animation-delay: 0s; /* без задержки */
+    animation-delay: 0s; /* No delay */
 }
 
 .small-circle.pink {
     background-color: pink;
-    animation-delay: 3.33s; /* задержка на треть периода */
+    animation-delay: 3.33s; /* Delay of one third of the period */
 }
 
 .small-circle.yellow {
     background-color: yellow;
-    animation-delay: 6.66s; /* задержка на две трети периода */
+    animation-delay: 6.66s; /* Delay of two thirds of the period */
 }
 
-/* Анимация орбиты */
+/* Keyframes for orbit animation */
 @keyframes orbit {
     0% { transform: translate(-50%, -50%) rotate(0deg) translateX(80px) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg) translateX(80px) rotate(-360deg); }
 }
 
-/* Анимация смены формы */
+/* Keyframes for shape change animation */
 @keyframes shapeChange {
-    0%, 30% { border-radius: 50%; } /* Круг */
-    33%, 63% { border-radius: 0; } /* Квадрат */
+    0%, 30% { border-radius: 50%; } /* Circle */
+    33%, 63% { border-radius: 0; } /* Square */
     66%, 96% {
         border-radius: 0;
         clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    } /* Треугольник */
-    100% { border-radius: 50%; } /* Снова круг */
+    } /* Triangle */
+    100% { border-radius: 50%; } /* Back to circle */
 }

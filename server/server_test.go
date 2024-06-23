@@ -7,11 +7,12 @@ import (
 	"strings"
 	"testing"
 
-	"leart.com/art/cypher" // Импортируем пакет с функцией if_decod
+	"leart.com/art/cypher" // Import the package with the If_Decod function
 )
 
+// TestDecodeHandler tests the decodeHandler with valid input
 func TestDecodeHandler(t *testing.T) {
-	validEncodedText := "[5 #][5 -_]-[5 #]" // Замените на реальную закодированную строку
+	validEncodedText := "[5 #][5 -_]-[5 #]" // Replace with actual encoded string
 
 	req, err := http.NewRequest("POST", "/decode", strings.NewReader("text="+validEncodedText))
 	if err != nil {
@@ -28,6 +29,7 @@ func TestDecodeHandler(t *testing.T) {
 	}
 }
 
+// TestIndexHandler tests the indexHandler
 func TestIndexHandler(t *testing.T) {
 	req, err := http.NewRequest("GET", "/", nil)
 	if err != nil {
@@ -48,11 +50,12 @@ func TestIndexHandler(t *testing.T) {
 	}
 }
 
+// TestDecodeHandlerInvalidInput tests the decodeHandler with invalid input
 func TestDecodeHandlerInvalidInput(t *testing.T) {
-	invalidEncodedText := "" // Пустая строка, которая не может быть декодирована
+	invalidEncodedText := "" // Empty string which cannot be decoded
 
-	// Проверяем, что пустая строка не является декодированным сообщением
-	if !cypher.If_Decod(invalidEncodedText) { // Используем функцию из пакета cypher
+	// Ensure the empty string is not a decoded message
+	if !cypher.If_Decod(invalidEncodedText) { // Use the function from the cypher package
 		t.Fatalf("Expected invalidEncodedText to be undecoded, but it is already decoded")
 	}
 
@@ -71,6 +74,7 @@ func TestDecodeHandlerInvalidInput(t *testing.T) {
 	}
 }
 
+// TestDecodeEndpointInvalidInput tests the decodeHandler with invalid input and endpoint
 func TestDecodeEndpointInvalidInput(t *testing.T) {
 	invalidEncodedText := ""
 	expectedStatusCode := http.StatusBadRequest

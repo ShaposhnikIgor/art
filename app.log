@@ -12,3 +12,15 @@
 2024/06/21 14:27:29 Bad request: invalid encoded text
 2024/06/21 14:31:16 Method not allowed: GET
 2024/06/21 14:33:53 Bad request: invalid encoded text
+2024/06/23 18:36:26 Bad request: invalid encoded text
+2024/06/23 23:43:38 /home/igor/k.SisuGo/art/cypher/Art_decode.go:57: error: Invalid repeat count
+2024/06/23 23:44:02 Bad request: invalid encoded text
+2024/06/23 23:44:33 Bad request: invalid encoded text
+2024/06/23 23:45:21 /home/igor/k.SisuGo/art/cypher/Art_decode.go:48: error: Invalid section format
+2024/06/24 01:19:30 /home/igor/k.SisuGo/art/cypher/Art_decode.go:48: error: Invalid section format
+2024/06/24 01:19:42 /home/igor/k.SisuGo/art/server/serverhtml.go:68: Неверный закодированный текст
+2024/06/24 01:21:38 /home/igor/k.SisuGo/art/server/serverhtml.go:68: Неверный закодированный текст
+2024/06/24 01:21:56 /home/igor/k.SisuGo/art/cypher/Art_decode.go:48: error: Invalid section format
+2024/06/24 01:42:05 Error decoding text: invalid section format
+2024/06/24 01:42:20 Error decoding text: invalid section format
+2024/06/24 01:42:31 Bad request: invalid encoded text

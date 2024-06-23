@@ -12,12 +12,14 @@ import (
 
 var tmpl *template.Template
 
+// Initialize the template
 func init() {
 	_, filename, _, _ := runtime.Caller(0)
 	path := filepath.Join(filepath.Dir(filename), "templates", "index.html")
 	tmpl = template.Must(template.ParseFiles(path))
 }
 
+// NoCacheMiddleware ensures no caching for responses
 func NoCacheMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
@@ -27,6 +29,7 @@ func NoCacheMiddleware(next http.Handler) http.Handler {
 	})
 }
 
+// NewHandler sets up the HTTP handlers and routes
 func NewHandler() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", indexHandler)
@@ -38,13 +41,14 @@ func NewHandler() http.Handler {
 	return mux
 }
 
+// indexHandler handles requests to the root URL
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		log.Printf("Method not allowed: %s", r.Method)
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
-	// Устанавливаем статус HTTP 200 перед отправкой тела ответа
+	// Set HTTP status to 200 before sending the response body
 	w.WriteHeader(http.StatusOK)
 	if err := tmpl.Execute(w, nil); err != nil {
 		logError(err)
@@ -52,6 +56,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// decodeHandler handles requests to decode text
 func decodeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		log.Printf("Method not allowed: %s", r.Method)
@@ -64,21 +69,28 @@ func decodeHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Bad request: empty text", http.StatusBadRequest)
 		return
 	}
-	// Проверяем допустимость закодированного текста
+	// Validate the encoded text
 	if cypher.If_Decod(encodedText) || !cypher.IsBalanced([]byte(encodedText)) {
 		log.Printf("Bad request: invalid encoded text")
 		http.Error(w, "Bad request: invalid encoded text", http.StatusBadRequest)
 		return
 	}
-	// Закодированный текст допустим, возвращаем HTTP 202
+	// Attempt to decode the text
+	decodedText, err := cypher.Decod_Art(encodedText)
+	if err != nil {
+		log.Printf("Error decoding text: %v", err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	// Encoded text is valid, return HTTP 202
 	w.WriteHeader(http.StatusAccepted)
-	decodedText := cypher.Decod_Art(encodedText)
 	if err := tmpl.Execute(w, map[string]string{"Result": decodedText}); err != nil {
 		logError(err)
 		http.Error(w, "Internal server error", http.StatusInternalServerError)
 	}
 }
 
+// encodeHandler handles requests to encode text
 func encodeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		log.Printf("Method not allowed: %s", r.Method)
@@ -98,6 +110,7 @@ func encodeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// logError logs the error with the file and line number
 func logError(err error) {
 	_, file, line, _ := runtime.Caller(1)
 	log.Printf("%s:%d: %v", file, line, err)

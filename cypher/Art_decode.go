@@ -1,23 +1,22 @@
 package cypher
 
 import (
-	"log"
-	"runtime"
+	"fmt"
 	"strconv"
 	"strings"
 )
 
-// decode_Art decodes the given message encoded in the ART cipher.
-// It takes a string message as input and returns the decoded message as a string.
-func Decod_Art(message string) string {
+// Decod_Art decodes the given message encoded in the ART cipher.
+// It takes a string message as input and returns the decoded message as a string along with an error if any.
+func Decod_Art(message string) (string, error) {
 	// Check if the data is already decoded.
 	if If_Decod(message) {
-		return "data decoded, try again" // Return a message indicating that the data is already decoded.
+		return "", fmt.Errorf("data already decoded")
 	}
 
 	// Check if the square brackets in the message are balanced.
 	if !IsBalanced([]byte(message)) {
-		return "unbalanced square brackets" // Return a message indicating unbalanced square brackets.
+		return "", fmt.Errorf("unbalanced square brackets")
 	}
 
 	// Initializing a strings.Builder to efficiently build strings.
@@ -33,10 +32,7 @@ func Decod_Art(message string) string {
 			// Find the index of the closing ']' for the current section.
 			closeBracketIndex := strings.Index(message[i:], "]")
 			if closeBracketIndex == -1 { // If ']' is not found, indicating invalid input.
-				// Log an error message indicating missing closing bracket.
-				_, file, line, _ := runtime.Caller(0)
-				log.Printf("%s:%d: error: Missing closing bracket", file, line)
-				return "error: Missing closing bracket" // Return an error message.
+				return "", fmt.Errorf("missing closing bracket")
 			}
 
 			closeBracketIndex += i // Adjust the index to get the absolute position of the closing bracket.
@@ -44,19 +40,13 @@ func Decod_Art(message string) string {
 			// Split the section into repeat count and content.
 			parts := strings.SplitN(message[i+1:closeBracketIndex], " ", 2)
 			if len(parts) != 2 || parts[1] == "" { // If the split does not result in two parts or content is empty, indicating invalid input.
-				// Log an error message indicating invalid section format.
-				_, file, line, _ := runtime.Caller(0)
-				log.Printf("%s:%d: error: Invalid section format", file, line)
-				return "error: Invalid section format" // Return an error message.
+				return "", fmt.Errorf("invalid section format")
 			}
 
 			// Convert repeat count from string to integer.
 			repeatCount, err := strconv.Atoi(parts[0])
 			if err != nil { // If conversion fails, indicating invalid input.
-				// Log an error message indicating invalid repeat count.
-				_, file, line, _ := runtime.Caller(0)
-				log.Printf("%s:%d: error: Invalid repeat count", file, line)
-				return "error: Invalid repeat count" // Return an error message.
+				return "", fmt.Errorf("invalid repeat count")
 			}
 
 			// Repeat the content of the section and append to the decoded message.
@@ -71,5 +61,5 @@ func Decod_Art(message string) string {
 		}
 	}
 
-	return decodedMessage.String() // Return the decoded message.
+	return decodedMessage.String(), nil // Return the decoded message.
 }

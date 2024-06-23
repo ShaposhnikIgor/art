@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ART Cypher Tool</title>
+    <!-- Link to the external stylesheet -->
     <link rel="stylesheet" href="/static/style.css?v=123456">
 </head>
 <body>
+    <!-- Header section containing the animated elements and the main title -->
     <div class="header">
         <div class="sphere-container">
+            <!-- The central purple circle with a pulsing animation -->
             <div class="purple-circle"></div>
+            <!-- The rotating sphere containing five circles -->
             <div class="sphere">
                 <div class="circle">
                     <div class="content">kood<span>/</span>Sisu</div>
@@ -27,28 +31,35 @@
                     <div class="content">kood<span>/</span>Sisu</div>
                 </div>
             </div>
+            <!-- Three small circles orbiting around the purple circle -->
             <div class="small-circle orange"></div>
             <div class="small-circle pink"></div>
             <div class="small-circle yellow"></div>
         </div>
+        <!-- The main title with a rainbow text animation -->
         <h1 class="rainbow-text">Welcome to the ART Cypher Tool</h1>
     </div>
+    <!-- Main container for the form elements and image -->
     <div class="container">
+        <!-- Form for decoding text -->
         <form action="/decode" method="post">
             <textarea name="text" placeholder="Enter encoded text here..." required></textarea>
             <button type="submit">Decode</button>
         </form>
+        <!-- Container for the animated image -->
         <div class="image-container">
             <div class="image"></div>
         </div>
+        <!-- Form for encoding text -->
         <form action="/encode" method="post">
             <textarea name="text" placeholder="Enter text to encode..." required></textarea>
             <button type="submit">Encode</button>
         </form>
     </div>
+    <!-- Conditional rendering of the result section -->
     {{if .Result}}
     <h2>Result</h2>
     <pre>{{.Result}}</pre>
-    {{end}}   
+    {{end}}
 </body>
 </html>

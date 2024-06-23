@@ -39,7 +39,7 @@ func RunCLI() {
 		encodedText := args[0]
 
 		// Decode the text and print the result.
-		decodedText := decode_Art(encodedText)
+		decodedText, _ := decode_Art(encodedText)
 		fmt.Println(decodedText)
 		return
 	}
@@ -63,13 +63,13 @@ func RunCLI() {
 			if toEncrypt.Choice == "1" {
 				result = encode_Art(message)
 			} else {
-				result = decode_Art(message)
+				result, _ = decode_Art(message)
 			}
 		case "2":
 			if toEncrypt.Choice == "1" {
 				result = encode_Art(message)
 			} else {
-				result = decode_Art(message)
+				result, _ = decode_Art(message)
 			}
 		default:
 			fmt.Println("Invalid input method selection. Please try again.")
